@@ -3,8 +3,7 @@ import random
 word_list = ["aardvark", "baboon", "camel"]
 
 #TODO-1 - Randomly choose a word from the word_list and assign it to a variable called chosen_word.
-for word in word_list:
-  random_word = random.choice(word_list)
+random_word = random.choice(word_list)
   
 #print(random_word)
 print(random_word)
@@ -19,7 +18,17 @@ print(guess)
 
 
 #TODO-3 - Check if the letter the user guessed (guess) is one of the letters in the chosen_word.
-if guess in (random_word):
-  print("Yes")
-else:
-  print("No")
+
+#if guess in (random_word):
+#  print("Yes")
+#else:
+#  print("No") 
+
+for letter in random_word:
+  if letter == guess:
+    print("right")
+  else:
+    print("wrong")
+
+  
+
