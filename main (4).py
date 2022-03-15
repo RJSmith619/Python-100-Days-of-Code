@@ -2,8 +2,7 @@
 
 import random
 from hangman_words import word_list
-from hangman_art import stages
-from hangman_art import logo
+from hangman_art import stages, logo
 
 #TODO-1: - Update the word list to use the 'word_list' from hangman_words.py
 chosen_word = random.choice(word_list)
@@ -27,20 +26,19 @@ while not end_of_game:
     guess = input("Guess a letter: ").lower()
 
     #TODO-4: - If the user has entered a letter they've already guessed, print the letter and let them know.
-
+    if guess in display:
+        print(f"You've already guessed {guess}")
     #Check guessed letter
     for position in range(word_length):
         letter = chosen_word[position]
         #print(f"Current position: {position}\n Current letter: {letter}\n Guessed letter: {guess}")
         if letter == guess:
-          if display[position] != "_":
-            print("You've already guessed this letter")
-          else:  
             display[position] = letter
 
     #Check if user is wrong.
     if guess not in chosen_word:
         #TODO-5: - If the letter is not in the chosen_word, print out the letter and let them know it's not in the word.
+        print(f"You guessed letter: {guess}. It is not in the word. You lose a life")
         lives -= 1
         if lives == 0:
             end_of_game = True
